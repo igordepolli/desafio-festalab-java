@@ -1,31 +1,29 @@
 package com.mycompany.mavenproject1.model;
 
-import java.time.LocalDate;
 import java.util.UUID;
-
 public class Bug {
     
     private String id;
     private String title;
-    private LocalDate date;
+    private int age;
     private Priority priority;
 
     public Bug() {
         genenerateRandomID();
     }
 
-    public Bug(String title, LocalDate date, Priority priority) {
+    public Bug(String title, int age, Priority priority) {
         genenerateRandomID();
         
         this.title = title;
-        this.date = date;
+        this.age = age;
         this.priority = priority;
     }
 
-    public Bug(String id, String title, LocalDate date, Priority priority) {
+    public Bug(String id, String title, int age, Priority priority) {
         this.id = id;
         this.title = title;
-        this.date = date;
+        this.age = age;
         this.priority = priority;
     }
     
@@ -41,8 +39,8 @@ public class Bug {
         return title;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public int getAge() {
+        return age;
     }
 
     public Priority getPriority() {

@@ -2,38 +2,31 @@ package com.mycompany.mavenproject1.controller;
 
 import com.mycompany.mavenproject1.model.Bug;
 import com.mycompany.mavenproject1.model.Priority;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BugController {
 
-    private final List<String> idsBugToResolveToday;
+    private final List<Bug> bugsToResolveToday;
     
     public BugController() {
-        idsBugToResolveToday = new ArrayList<>();
+        bugsToResolveToday = new ArrayList<>();
     }
     
-    public List<String> bugsToResolveToday(List<Bug> bugs) {
+    public List<Bug> bugsToResolveToday(List<Bug> bugs) {
         for (Bug bug : bugs) {
-            addBug(bug);
+            fillListOfBugs(bug);
         }
 
-        return idsBugToResolveToday;
+        return bugsToResolveToday;
     }
 
-    private void addBug(Bug bug) {
+    private void fillListOfBugs(Bug bug) {
         if (bug.getPriority() == Priority.CRITICAL) {
-            idsBugToResolveToday.add(bug.getId());
-        } else {
-            addNormalBug(bug);
+            bugsToResolveToday.add(bug);
+        } else if (bug.getAge() >= 3) {
+            bugsToResolveToday.add(bug);
         }
     }
 
-    private void addNormalBug(Bug bug) {
-        if (ChronoUnit.DAYS.between(bug.getDate(), LocalDate.now()) >= 3) {
-            idsBugToResolveToday.add(bug.getId());
-        }
-    }
 }
