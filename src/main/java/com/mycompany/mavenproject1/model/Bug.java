@@ -31,6 +31,10 @@ public class Bug {
         id = UUID.randomUUID().toString();
     }
 
+    public boolean isCritical() {
+        return priority == Priority.CRITICAL;
+    }
+
     public String getId() {
         return id;
     }
